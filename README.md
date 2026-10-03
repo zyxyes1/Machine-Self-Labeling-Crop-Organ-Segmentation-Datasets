@@ -50,3 +50,43 @@ The MSL framework addresses a critical bottleneck in agricultural AI: pixel-leve
 - **Note**: This dataset is used **only for testing** and never participates in training, early stopping, model selection, or hyperparameter tuning
 
 ## File Structure
+MSL-Crop-Organ-Segmentation-Datasets/
+├── README.md
+├── LICENSE
+├── CITATION.cff
+└── data/
+├── FIP-1.0.zip # Wheat spike, 100 images + GT
+├── MTC.zip # Maize tassel, 303 images + GT
+├── MrMT.zip # Maize tassel, 1,000 images (no GT)
+└── maize-Redmi.zip # Maize tassel, 61 images + GT
+
+## Download
+
+All datasets are available as ZIP archives under the **[Releases](https://github.com/YOUR_USERNAME/MSL-Crop-Organ-Segmentation-Datasets/releases)** section.
+
+| Dataset | File | Size | Download |
+|---|---|---|---|
+| FIP-1.0 | `FIP-1.0.zip` | ~52.9 MB | [Download](https://github.com/YOUR_USERNAME/MSL-Crop-Organ-Segmentation-Datasets/releases/download/v1.0.0/FIP-1.0.zip) |
+| MTC | `MTC.zip` | ~120.7 MB | [Download](https://github.com/YOUR_USERNAME/MSL-Crop-Organ-Segmentation-Datasets/releases/download/v1.0.0/MTC.zip) |
+| MrMT | `MrMT.zip` | ~100 MB | [Download](https://github.com/YOUR_USERNAME/MSL-Crop-Organ-Segmentation-Datasets/releases/download/v1.0.0/MrMT.zip) |
+| maize-Redmi | `maize-Redmi.zip` | ~50 MB | [Download](https://github.com/YOUR_USERNAME/MSL-Crop-Organ-Segmentation-Datasets/releases/download/v1.0.0/maize-Redmi.zip) |
+
+## Usage
+
+### Data Format
+
+Each ZIP archive contains:
+- `images/` — original RGB images (`.jpg` or `.png`)
+- `masks/` — pixel-level ground truth masks (`.png`), where `0` = background and `255` (or `1`) = foreground
+
+For datasets **without** ground truth (MrMT), only the `images/` folder is provided.
+
+### Recommended Workflow
+
+1. Download the desired datasets from the Releases page
+2. Extract the ZIP archives
+3. Use the MSL framework (code available at [MSL-Code-Repository]) for:
+   - Self-labeling on unlabeled target domains (MrMT)
+   - Cross-domain evaluation on hold-out sets (FIP-1.0, maize-Redmi)
+   - Baseline comparison with human GT (MTC)
+  
